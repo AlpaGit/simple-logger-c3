@@ -3,8 +3,9 @@ module logger;
 import std::io;
 import libc;
 import std::time;
+import std::core;
 
-LogLevel min_log_level @private = LogLevel.DEBUG; 
+LogLevel min_log_level @private = LogLevel.DEBUG;
 
 struct LogEvent {
     String fmt;
@@ -20,10 +21,10 @@ enum Colors: uint (String value) {
 }
 
 enum LogLevel : uint (String name, String color) {    
-    DEBUG =  { "DEBUG", "\x1b[36m" },   
-    WARN  =  { "WARN",  "\x1b[33m" },   
-    INFO  =  { "INFO",  "\x1b[32m" }, 
-    ERROR =  { "ERROR", "\x1b[31m" },
+    DEBUG =  { "DEBUG", "\e[36m" },   
+    WARN  =  { "WARN",  "\e[33m" },   
+    INFO  =  { "INFO",  "\e[32m" }, 
+    ERROR =  { "ERROR", "\e[31m" },
 }
 
 fn void set_min_log_level(LogLevel level) 
@@ -35,7 +36,7 @@ macro void log_event(LogEvent* ev, ...)
 {
     Tm* timeptr = ev.time;
 
-	io::printf("%s%02d:%02d:%02d%s%s %s%s %s%s:%s: %s",
+	io::printf("%s%02d:%02d:%02d%s%s %-6s%s %s%s:%s: %s",
      Colors.GRAY.value,
      timeptr.tm_hour,
      timeptr.tm_min, 
