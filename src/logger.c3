@@ -36,7 +36,7 @@ macro void log_event(LogEvent* ev, ...)
 {
     Tm* timeptr = ev.time;
 
-	io::printf("%s%02d:%02d:%02d%s%s %-6s%s %s%s:%s: %s",
+	io::printf("%s%02d:%02d:%02d%s%s %-6s%s %s%15s:%s: %s",
      Colors.GRAY.value,
      timeptr.tm_hour,
      timeptr.tm_min, 
