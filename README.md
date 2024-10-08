@@ -2,4 +2,4 @@ Build:
 ```make```
 
 
-![Screenshot](https://i.imgur.com/oxg6yYP.png)
+![Screenshot](https://i.imgur.com/CUtMqvN.png)
