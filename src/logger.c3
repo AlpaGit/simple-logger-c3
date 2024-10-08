@@ -4,7 +4,7 @@ import std::io;
 import libc;
 import std::time;
 
-LogLevel min_log_level = LogLevel.DEBUG;
+LogLevel min_log_level @private = LogLevel.DEBUG; 
 
 struct LogEvent {
     String fmt;
